@@ -1,9 +1,25 @@
-#Greenfoot project file
-mainWindow.height=358
-mainWindow.width=713
-mainWindow.x=-18
-mainWindow.y=288
-package.numDependencies=0
-package.numTargets=0
+#Greenfoot properties
+#Mon Mar 29 08:14:15 EDT 2021
 project.charset=UTF-8
-version=2.6.0
+class.Block.superclass=greenfoot.Actor
+mainWindow.height=358
+version=3.0.0
+class.Wall.superclass=greenfoot.Actor
+class.Pizza.image=pizza_cheese.png
+class.RobotWorld.superclass=greenfoot.World
+class.Wall.image=brick.jpg
+class.Home.image=house-03.png
+world.lastInstantiated=RobotWorld
+mainWindow.y=288
+class.Block.image=Block.png
+mainWindow.x=-18
+class.Pizza.superclass=greenfoot.Actor
+package.numDependencies=0
+class.RobotWorld.image=rivets.jpg
+class.Scorepanel.superclass=greenfoot.Actor
+package.numTargets=0
+mainWindow.width=713
+class.Scorepanel.image=ScorePanel.png
+class.Robot.superclass=greenfoot.Actor
+class.Robot.image=man01.png
+class.Home.superclass=greenfoot.Actor
