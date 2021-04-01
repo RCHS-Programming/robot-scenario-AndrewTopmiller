@@ -27,5 +27,9 @@ public class RobotWorld extends World
         addObject(new Home(), 650, 470);
         addObject(new Scorepanel(),80,470);
         addObject(new Pizza(),650,40);
+        addObject(new Pizza(),400,400);
+        addObject(new Pizza(),500,300);
+        addObject(new Pizza(),200,300);
+        addObject(new Pizza(),200,470);
     }
 }
