@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Robot extends Actor
 {
     private GreenfootImage robotimage1;
-    private GreenfootImage robotimage2; 
+    private GreenfootImage robotimage2;
+    private GreenfootImage gameOver1;
     private int lives;
     private int score;
     private int pizzaEaten;
@@ -21,16 +22,21 @@ public class Robot extends Actor
     {
          robotimage1=new GreenfootImage("man01.png");
          robotimage2=new GreenfootImage("man02.png");
+         gameOver1=new GreenfootImage("gameover.png");
          lives=3;
          score=0;
          pizzaEaten=0;
+         
     }
     public void act() 
     {
        robotMovement();
        detectWallCollision();
        detectHome();
-       eatPizza();// Add your action code here.
+       eatPizza();
+       dectectBlockCollision();
+       endGame();
+       showStatus();// Add your action code here.
     }   
     
     public void robotMovement()
@@ -66,7 +72,19 @@ public class Robot extends Actor
         if (isTouching(Wall.class))
         {
             setLocation(30, 40);
+            lives = lives - 1;
             Greenfoot.playSound("hurt.wav");
+            showStatus();
+        }
+    }
+    public void dectectBlockCollision()
+    {
+        if (isTouching(Block.class))
+        {
+            setLocation(30, 40);
+            lives = lives - 1;
+            Greenfoot.playSound("hurt.wav");
+            showStatus();
         }
     }
     public void detectHome()
@@ -76,6 +94,8 @@ public class Robot extends Actor
             Greenfoot.stop();
             setLocation(30, 40);
             Greenfoot.playSound("yipee.wav");
+            pizzaEaten = pizzaEaten - 5;
+            showStatus();
         }
         if (isTouching(Home.class))
         {
@@ -83,6 +103,8 @@ public class Robot extends Actor
             Greenfoot.playSound("yipee.wav");
             
         }
+        increaseScore();
+        showStatus();
     }
     public void eatPizza()
     {
@@ -91,8 +113,30 @@ public class Robot extends Actor
             removeTouching(Pizza.class);
             Greenfoot.playSound("eat.wav");
             pizzaEaten = pizzaEaten + 1;
-            
+            showStatus();
         }
     }
-    
+    public void endGame()
+    {
+        if (lives == 0 )
+        {
+            Greenfoot.stop();
+        
+            setImage(gameOver1);
+        
+        }
+    }
+    public void increaseScore()
+    {
+        if (isTouching(Home.class))
+        {
+            score = score + 1;
+            showStatus();
+        }
+    }
+    public void showStatus()
+    {
+        getWorld().showText("Lives : "+lives,70, 540);
+        getWorld().showText("Pizzas: "+pizzaEaten, 70,560);
+    }
 }
